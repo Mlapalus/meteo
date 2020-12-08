@@ -43,15 +43,15 @@ async function main(withIP = true)
               .then(result => result.json())
               .then(json => json.ip);
 
-  ville = await fetch('https://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
+  ville = await fetch('http://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
                 .then(result => result.json())
                 .then(json => json.city);
+  if (ville === undefined) {ville = "paris";}
   } else 
   {
     ville = document.querySelector('#ville').value;
   }
   //recuperer l'ip
-
   const meteo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${KEY_WEATHER}&lang=fr&units=metric`)
                 .then(result => result.json())
                 .then(json => json);
@@ -78,8 +78,6 @@ function displayMeteo(meteo)
 
 const ville = document.getElementById('ville');
 const newVille = document.querySelector('#cities-select');
-
-console.log($_SERVER);
 
 newCountries.getData()
             .then(result => 
