@@ -48,16 +48,77 @@ h1 {
 
 i.wi {
   font-size: 5em;
-  line-height: 3em;
+  line-height: 3rem;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2rem;
 }
+
 #ville {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1em;
-    background-color: rgba(0, 0, 0, 0);
-    color: #fff;
-    text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  text-align: center;
+}
+
+.country,
+.city {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  overflow: hidden;
+  border: 0 solid rgba(0, 0, 0, 0);
+}
+
+.country select,
+.city select {
+  padding: 5px 8px;
+  border: none;
+  box-shadow: none;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #000000;
+  font-size: 1rem;
+}
+
+.country:after,
+.city:after {
+  top: 50%;
+  left: 85%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000000;
+  border-width: 5px;
+  margin-top: -2px;
+  z-index: 100;
+}
+
+.country select:focus, .city select:focus {
+  outline: none;
+}
+
+.options {
+  text-align: center;
+}
+
+@media screen and (min-wifdth: 400px) {
+  .options {
+    height: 100px;
+  }
+
+  .country {
+    font-size: 2em;
+  }
 }

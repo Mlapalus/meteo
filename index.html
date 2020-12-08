@@ -10,7 +10,6 @@
     crossorigin="anonymous" />
 </head>
 <body>
-
   <section id="app" >
     <h1>
       <input id="ville" value="..." readonly/>
@@ -18,16 +17,26 @@
     </h1>
     <i class="wi wi-day-rain"></i>
     <h2>
-      <span id="temperature">...</span> C° (<span id="conditions">...</span>)
+      <span id="temperature">...</span>C
     </h2>
-    <label for="country-select">Choissez un Pays:</label>
-    <select name="country" id="country-select">
-      <option value="" selected>---Choissisez un Pays---</option>
-    </select>
-    <label for="cities-select">Choissez une ville:</label>
-    <select name="cities" id="cities-select">
-      <option value="" selected>---Choissisez une ville---</option>
-    </select>
+    <h2>
+      (<span id="conditions">...</span>)
+    </h2>
+    </h2>
+    <div class="country">
+      <label for="country-select">Choisissez un Pays:</label>
+      <select name="country" id="country-select">
+        <option class="options" value="" selected>---Choisissez un Pays---</option>
+      </select>
+    </div>
+    
+    <div class="city">
+      <label for="cities-select">Choisissez une ville:</label>
+      <select name="cities" id="cities-select">
+        <option class="options" value="" selected>---Choisissez une ville---</option>
+      </select>
+    </div>
+    
 
   </section>
 

@@ -27,6 +27,7 @@ cleanSelect(comboBox)
   optionMenu.value = "";
   optionMenu.innerHTML = "---Choissez une ville---";
   optionMenu.selected = true;
+  optionMenu.className = "options";
   comboBox.add(optionMenu);
 }
 
