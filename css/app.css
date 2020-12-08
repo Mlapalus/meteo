@@ -67,9 +67,9 @@ h2 {
 .city {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
   overflow: hidden;
   border: 0 solid rgba(0, 0, 0, 0);
 }
@@ -78,6 +78,7 @@ h2 {
 .city select {
   padding: 5px 8px;
   border: none;
+  width: 250px;
   box-shadow: none;
   background-color: #fff;
   background-image: none;
@@ -88,24 +89,9 @@ h2 {
   font-size: 1rem;
 }
 
-.country:after,
-.city:after {
-  top: 50%;
-  left: 85%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(0, 0, 0, 0);
-  border-top-color: #000000;
-  border-width: 5px;
-  margin-top: -2px;
-  z-index: 100;
-}
 
-.country select:focus, .city select:focus {
+.country select:focus,
+.city select:focus {
   outline: none;
 }
 
@@ -115,7 +101,7 @@ h2 {
 
 @media screen and (min-wifdth: 400px) {
   .options {
-    height: 100px;
+    width: auto;
   }
 
   .country {
