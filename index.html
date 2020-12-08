@@ -13,7 +13,7 @@
 
   <section id="app" >
     <h1>
-      <input id="ville" value="..." />
+      <input id="ville" value="..." readonly/>
       <span class=""></span>
     </h1>
     <i class="wi wi-day-rain"></i>
@@ -22,13 +22,15 @@
     </h2>
     <label for="country-select">Choissez un Pays:</label>
     <select name="country" id="country-select">
+      <option value="" selected>---Choissisez un Pays---</option>
     </select>
     <label for="cities-select">Choissez une ville:</label>
     <select name="cities" id="cities-select">
+      <option value="" selected>---Choissisez une ville---</option>
     </select>
 
   </section>
 
-  <script src="js/app.js"></script>
+  <script type="module"src="js/app.js"></script>
 </body>
 </html>

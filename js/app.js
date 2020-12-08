@@ -1,58 +1,6 @@
-const requestCitytUrl = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
-const requestCountrytUrl = "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json";
+import RequestData from './RequestData.js';
+import SelectController from './SelectController.js'
 
-const requestCity = new XMLHttpRequest();
-const requestCountry = new XMLHttpRequest();
-const world_cities = {};
-
-const selectCountry = document.querySelector('select');
-const selectCity = document.getElementById('cities-select');
-
-function cleanSelect(comboBox) 
-{ 
-  while (comboBox.options.length > 0) 
-  { 
-    comboBox.remove(0); 
-  } 
-} 
-
-function getCountries() {
-    requestCountry.open('GET', requestCountrytUrl);
-    requestCountry.responseType ='json';
-    requestCountry.send();
-    requestCountry.onload = function () {
-        const countries = requestCountry.response;
-        countries.map( (country) => {
-                const opt = document.createElement('option');
-                opt.value = country["Name"];
-                opt.innerHTML = country["Name"];
-                selectCountry.appendChild(opt);
-          }
-        )
-    }
-}
-
-function getCities(country) {
-  cleanSelect(selectCity);
-  requestCity.open('GET', requestCitytUrl);
-  requestCity.responseType ='json';
-  requestCity.send();
-  requestCity.onload = function () {
-    const cities = requestCity.response;
-    cities.map( (city) => {
-                if ( city['country'] == country) 
-                {
-
-                  world_cities[city['name']] = city['country'];
-                  const opt = document.createElement('option');
-                  opt.value = city["name"];
-                  opt.innerHTML = city["name"];
-                  opt.selected = true;
-                  selectCity.appendChild(opt);
-                }
-          }
-    )}
-}
 const weatherIcons = {
   "Rain": "wi wi-day-rain",
   "Clouds": "wi wi-day-cloudy",
@@ -62,10 +10,25 @@ const weatherIcons = {
   "Drizzle": "wi wi-day-sleet",
 }
 
+const requestCountrytUrl = "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json";
+const selectCountry = document.querySelector('select');
+const newCountries = new RequestData(requestCountrytUrl);
+
+const requestCitytUrl = "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
+const selectCity = document.getElementById('cities-select');
+const newCities = new RequestData(requestCitytUrl);
 
 
 function capitalize(str){
   return str[0].toUpperCase() + str.slice(1);
+}
+function sortJson(json)
+{
+  json.sort(function compare(a,b){
+                if (a.name < b.name) return -1;
+                if (a.name > b.name) return 1;
+                return 0;
+  });
 }
 
 async function main(withIP = true)
@@ -76,12 +39,11 @@ async function main(withIP = true)
   
 
   if(withIP) {
-
   const ip = await fetch('https://api.ipify.org?format=json')
               .then(result => result.json())
               .then(json => json.ip);
 
-  ville = await fetch('https://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
+  ville = await fetch('http://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
                 .then(result => result.json())
                 .then(json => json.city);
   } else 
@@ -105,27 +67,36 @@ function displayMeteo(meteo)
     main();
   } else 
   {
-    document.getElementById('ville').innerHTML = meteo.name;
+    document.querySelector('#ville').value = meteo.name;
     document.getElementById('temperature').innerHTML = Math.round(meteo.main.temp);
     const weather = meteo.weather[0];
     document.getElementsByTagName('i')[0].className = weatherIcons[weather.main];
     document.getElementById('conditions').innerHTML = capitalize(weather.description);
     document.getElementsByTagName('body')[0].className = weather.main.toLowerCase();
   }
-  
-
 }
 
 const ville = document.getElementById('ville');
 const newVille = document.querySelector('#cities-select');
 
-getCountries();
+
+newCountries.getData()
+            .then(result => 
+              { 
+                const selectController = new SelectController(selectCountry,result,"Name", "");
+                selectController.displayOptionsListCountry();
+              });
+
 
 selectCountry.addEventListener('change', () => {
   const countrySelected = selectCountry.options[selectCountry.selectedIndex].value;
-  getCities(countrySelected);
-
-})
+  newCities.getData().then(result => 
+                            {
+                              sortJson(result);
+                              const selectController = new SelectController(selectCity,result,"name", countrySelected);
+                              selectController.displayOptionsListCity();
+                            });
+});
 
 newVille.addEventListener('change', (event) => 
 {
@@ -133,16 +104,5 @@ newVille.addEventListener('change', (event) =>
   result.value = event.target.value;
   main(false)
 })
-/* 
-ville.addEventListener('click', () => {
-  ville.contentEditable = true;
-});
-
-ville.addEventListener('keydown', (e) => {
-  if(e.keyCode === 13) {
-    e.preventDefault();
-    main(false);
-  }
-}) */
 
 main();
