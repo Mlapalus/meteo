@@ -25,7 +25,7 @@ cleanSelect(comboBox)
 
   const optionMenu = document.createElement('option');
   optionMenu.value = "";
-  optionMenu.innerHTML = "---Choissez une ville---";
+  optionMenu.innerHTML = "Liste des villes disponibles";
   optionMenu.selected = true;
   optionMenu.className = "options";
   comboBox.add(optionMenu);

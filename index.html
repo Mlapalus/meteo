@@ -10,35 +10,63 @@
     crossorigin="anonymous" />
 </head>
 <body>
-  <section id="app" >
-    <h1>
-      <input id="ville" value="..." readonly/>
-      <span class=""></span>
-    </h1>
-    <i class="wi wi-day-rain"></i>
-    <h2>
-      <span id="temperature">...</span>C
-    </h2>
-    <h2>
-      (<span id="conditions">...</span>)
-    </h2>
-    </h2>
-    <div class="country">
-      <label for="country-select">Choisissez un Pays:</label>
-      <select name="country" id="country-select">
-        <option class="options" value="" selected>---Choisissez un Pays---</option>
-      </select>
-    </div>
-    
-    <div class="city">
-      <label for="cities-select">Choisissez une ville:</label>
-      <select name="cities" id="cities-select">
-        <option class="options" value="" selected>---Choisissez une ville---</option>
-      </select>
-    </div>
-    
+  <header>
+    <p>
+      <i class="wi wi-sunrise"></i>
+      <span id="sunrise"></span>
+    </p>
+    <p>
+      <i class="wi wi-sunset"></i>
+      <span id="sunset"></span>
+    </p>
+  </header>
+  
+  <main>
+    <section id="app">
+      <h1>
+        <input id="ville" value="..." readonly />
+      </h1>
+      <i id="wi-current" class="wi wi-day-rain"></i>
+      <h2>
+        <span id="temperature">...</span>°<span id="unit">C</span>
+      </h2>
+      <h2 class="ressenti">
+        <span id="ressenti">...</span>°<span id="unit-ressenti">C</span> ressentie
+      </h2>
+      <h2>
+        (<span id="conditions">...</span>)
+      </h2>
+      <section id="selectors">
+        <section class="country">
+          <label for="country-select">Choix du Pays</label>
+          <select contenteditable="" name="country" id="country-select">
+            <option class="options" value="" selected>Liste des Pays...</option>
+          </select>
+        </section>
+        
+        <section class="city">
+          <label for="cities-select">Choix de la ville</label>
+          <select contenteditable=true name="cities" id="cities-select">
+            <option class="options" value="" selected>Liste des villes...</option>
+          </select>
+        </section>
 
-  </section>
+        <section id="params" class="units">
+            <label for="unit-select">Choix l'unité</label>
+            <select  contenteditable="" name="units" id="units-select">
+              <option value="metric" selected>Celcius</option>
+              <option value="imperial">Fahrenheit</option>
+              <option value="default">Kelvin</option>
+            </select>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>@copy MLapalus-dev</p>
+  </footer>
+  
 
   <script type="module"src="js/app.js"></script>
 </body>

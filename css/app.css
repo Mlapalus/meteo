@@ -27,27 +27,61 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   color: #fff;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 5);
+  font-size: 16px;
+  line-height: 5vh;
 
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-position: center;
   background-size: cover;
 }
 
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+header p {
+  margin: 5px 0px 0px 5px;
+}
+
+footer {
+  margin-top: 15px;
+  font-size: .7rem;
+}
+main {
+  width: 80%;
+  margin-bottom: 5px;
+}
+
+#ville {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  text-align: center;
+  border: transparent;
+  width: 100%;
+}
+
 h1 {
-  font-size: 3em;
   position: relative;
 }
 
 i.wi {
-  font-size: 5em;
   line-height: 3rem;
 }
 
@@ -55,16 +89,18 @@ h2 {
   font-size: 2rem;
 }
 
-#ville {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0);
-  color: #fff;
-  text-align: center;
+label {
+  font-size: .8rem;
+}
+
+.ressenti {
+  font-size: .7rem;
+  margin-top: 0;
 }
 
 .country,
-.city {
+.city,
+.units {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,7 +111,8 @@ h2 {
 }
 
 .country select,
-.city select {
+.city select,
+.units select {
   padding: 5px 8px;
   border: none;
   width: 250px;
@@ -89,22 +126,97 @@ h2 {
   font-size: 1rem;
 }
 
-
 .country select:focus,
-.city select:focus {
+.city select:focus,
+.units select:focus {
   outline: none;
 }
 
-.options {
-  text-align: center;
-}
-
-@media screen and (min-wifdth: 400px) {
-  .options {
-    width: auto;
+@media screen and (min-width: 470px) {
+  body {
+    line-height: 2vh;
   }
 
-  .country {
-    font-size: 2em;
+  main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  header {
+    margin-top: 0;
+    height: 10%;
+  }
+
+  #ville {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .country select,
+  .city select,
+  .units select {
+    font-size: .6rem;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  body {
+    line-height: 2vh;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  #selectors {
+    width: 90%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1rem;
+  }
+  #selectors section {
+    width: 30%;
+  }
+
+  header {
+    margin-top: 0;
+    height: 10%;
+  }
+
+  #ville {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+
+  .country select,
+  .city select,
+  .units select {
+    font-size: .5rem;
+    margin-top: 10px;
+    padding-left: 30px;
   }
 }
