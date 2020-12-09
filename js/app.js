@@ -63,7 +63,7 @@ async function main(withIP = true)
               .then(result => result.json())
               .then(json => json.ip);
 
-  ville = await fetch('http://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
+  ville = await fetch('https://api.ipstack.com/'+ip+'?access_key='+MY_KEY+'&output=json')
                 .then(result => result.json())
                 .then(json => console.log(json));
 
