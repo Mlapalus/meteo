@@ -1,14 +1,7 @@
 export default class SelectController
 {
 
-constructor(select, options, attribut, country ){
-  this.select = select;
-  this.attribut = attribut;
-  this.options = options;
-  this.country = country;
-}
-
-createOption(value)
+static createOption(value)
 {
   const optionElement = document.createElement('option');
   optionElement.value = value;
@@ -16,7 +9,7 @@ createOption(value)
   return optionElement;
 } 
 
-cleanSelect(comboBox) 
+static cleanSelect(comboBox) 
 { 
   while (comboBox.options.length > 0) 
   { 
@@ -31,21 +24,17 @@ cleanSelect(comboBox)
   comboBox.add(optionMenu);
 }
 
-displayOptionsListCountry()
+static displayOptionsListCountry(select, options, attribut)
 {
-  this.options.map( 
-    (option) => { this.select.appendChild(this.createOption(option[this.attribut]));
-                }
-                )
+  options.map( option => select.appendChild(this.createOption(option[attribut])) )                
 }
 
-displayOptionsListCity()
+static displayOptionsListCity(select, options, attribut, country)
 {
-  this.cleanSelect(this.select);
-  this.options.map( 
-    (option) => { 
-                  if(option['country'] == this.country) {
-                      this.select.appendChild(this.createOption(option[this.attribut]));
+  this.cleanSelect(select);
+  options.map( (option) => { 
+                  if(option['country'] == country) {
+                      select.appendChild(this.createOption(option[attribut]));
                   }
                 }
                 )

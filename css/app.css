@@ -67,7 +67,7 @@ main {
   margin-bottom: 5px;
 }
 
-#ville {
+#town {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 1em;
   background-color: rgba(0, 0, 0, 0);
@@ -79,6 +79,23 @@ main {
 
 h1 {
   position: relative;
+}
+.tooltip {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 20%;
+  color: #fff;
+  background-color: #222;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
+  transition: opacity .3s, top .5s;
+}
+
+h1:hover .tooltip {
+  top: -35px;
+  opacity: 1;
 }
 
 i.wi {
@@ -93,7 +110,7 @@ label {
   font-size: .8rem;
 }
 
-.ressenti {
+.feelsLike {
   font-size: .7rem;
   margin-top: 0;
 }
@@ -152,7 +169,7 @@ label {
     height: 10%;
   }
 
-  #ville {
+  #town {
     font-size: 1em;
   }
 
@@ -203,14 +220,13 @@ label {
     height: 10%;
   }
 
-  #ville {
+  #town {
     font-size: 1em;
   }
 
   h2 {
     font-size: 1.2rem;
   }
-
 
   .country select,
   .city select,
