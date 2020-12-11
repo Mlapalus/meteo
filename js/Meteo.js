@@ -36,7 +36,7 @@ export default class Meteo
   if(withIP) {
     ipCity = await RequestData.getData(config.requestIP);
   
-    const townUrl = 'http://api.ipstack.com/'+ipCity.ip+'?access_key='+config.MY_KEY+'&output=json';
+    const townUrl = 'https://api.ipstack.com/'+ipCity.ip+'?access_key='+config.MY_KEY+'&output=json';
     const townFounded = await RequestData.getData(townUrl);
 
     if (townFounded.city === undefined) {
