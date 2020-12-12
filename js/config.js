@@ -1,5 +1,6 @@
-export let config = {
-  weatherIcons: {
+export default class Config 
+{
+  static weatherIcons = {
                   "Rain": "wi wi-day-rain",
                   "Clouds": "wi wi-day-cloudy",
                   "Clear": "wi wi-day-clear",
@@ -25,34 +26,34 @@ export let config = {
                   "13n": "wi wi-night-snow",
                   "50d": "wi wi-day-haze",
                   "50n": "wi wi-night-fog"
-                  },
-  requestCountrytUrl: "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json",
+                  };
   
-  requestCitytUrl:  "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json",
+  static requestCountrytUrl = "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json";
+  
+  static requestCitytUrl =  "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
-  requestIP: "https://api.ipify.org?format=json",
+  static requestIP =  "https://api.ipify.org?format=json";
   
-  MY_KEY: "34751dcc6542b9445efba4a6f762beec",
+  static MY_KEY = "34751dcc6542b9445efba4a6f762beec";
   
-  KEY_WEATHER: "02c478b69cdc3cd2f342270f2b7c85bb",
+  static KEY_WEATHER = "02c478b69cdc3cd2f342270f2b7c85bb";
 
-  defaultMeteo: {
+  static defaultMeteo = {
                   main: {
                           temp: 0,
-                          fells_like: 0,
+                          feels_like: 0,
                   },
                   sys: {
                           sunrise: 0,
                           sunset: 0,
                   },
-                  name: "Maison",
+                  name: "Mauvais nom de ville",
                   weather: [
                     {
-                      description: "Cool",
+                      description: "Be Cool",
                       icon: '50d',
-                      main: "Rain"
+                      main: "Clear"
                     }
                   ]
   }
-
 }

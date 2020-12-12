@@ -12,13 +12,18 @@ let citiesByTown;
 Meteo.initCountry(selectCountry);
 Meteo.initCities().then(result => citiesByTown = result);
 
+town.addEventListener('focus', () =>
+{
+      town.value = "";
+    });
+
 town.addEventListener('keydown', (e) =>
             {
               if (e.keyCode === 13) {
                     e.preventDefault();
-                    Meteo.run(false);  
+                    Meteo.run(false);
               }
-            })
+            });
 
 selectCountry.addEventListener('change', () => {
   const countrySelected = selectCountry.options[selectCountry.selectedIndex].value;
