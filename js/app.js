@@ -1,5 +1,6 @@
 import SelectController from './SelectController.js';
 import Meteo from './Meteo.js';
+import Config from './Config.js';
 
 const selectCountry = document.querySelector('select');
 const selectCity = document.getElementById('cities-select');
@@ -9,8 +10,10 @@ const town = document.querySelector('#town');
 
 
 let citiesByTown;
-Meteo.initCountry(selectCountry);
-Meteo.initCities().then(result => citiesByTown = result);
+const meteo = new Meteo(new Config());
+
+meteo.initCountry(selectCountry);
+meteo.initCities().then(result => citiesByTown = result);
 
 town.addEventListener('focus', () =>
 {
@@ -21,7 +24,7 @@ town.addEventListener('keydown', (e) =>
             {
               if (e.keyCode === 13) {
                     e.preventDefault();
-                    Meteo.run(false);
+                    meteo.run(false);
               }
             });
 
@@ -34,7 +37,7 @@ newTown.addEventListener('change', (event) =>
 {
   const result = document.querySelector('#town');
   result.value = event.target.value;
-  Meteo.run(false)
+  meteo.run(false)
 })
 
 units.addEventListener('change', (event) => 
@@ -56,9 +59,9 @@ units.addEventListener('change', (event) =>
         modeTemp.innerHTML = "K";
         modeTempFeelsLike.innerHTML = "K";
       }
-  Meteo.run(false)
+  meteo.run(false)
 })
 
 
 
-Meteo.run();
+meteo.run();

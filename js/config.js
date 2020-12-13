@@ -1,6 +1,7 @@
 export default class Config 
 {
-  static weatherIcons = {
+  constructor() {
+    this.weatherIcons = {
                   "Rain": "wi wi-day-rain",
                   "Clouds": "wi wi-day-cloudy",
                   "Clear": "wi wi-day-clear",
@@ -28,17 +29,17 @@ export default class Config
                   "50n": "wi wi-night-fog"
                   };
   
-  static requestCountrytUrl = "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json";
+  this.requestCountrytUrl = "https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json";
   
-  static requestCitytUrl =  "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
+  this.requestCitytUrl =  "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json";
 
-  static requestIP =  "https://api.ipify.org?format=json";
+  this.requestIP =  "https://api.ipify.org?format=json";
   
-  static MY_KEY = "34751dcc6542b9445efba4a6f762beec";
+  this.MY_KEY = "34751dcc6542b9445efba4a6f762beec";
   
-  static KEY_WEATHER = "02c478b69cdc3cd2f342270f2b7c85bb";
+  this.KEY_WEATHER = "02c478b69cdc3cd2f342270f2b7c85bb";
 
-  static defaultMeteo = {
+  this.defaultMeteo = {
                   main: {
                           temp: 0,
                           feels_like: 0,
@@ -56,4 +57,9 @@ export default class Config
                     }
                   ]
   }
+
+
+
+  }
+  
 }
