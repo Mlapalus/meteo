@@ -1,6 +1,6 @@
 import SelectController from './SelectController.js';
 import Meteo from './Meteo.js';
-import Config from './Config.js';
+import Config from './config.js';
 
 const selectCountry = document.querySelector('select');
 const selectCity = document.getElementById('cities-select');

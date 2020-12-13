@@ -48,7 +48,7 @@ export default class Config
                           sunrise: 0,
                           sunset: 0,
                   },
-                  name: "Mauvais nom de ville",
+                  name: "Mauvais nom de ville !!",
                   weather: [
                     {
                       description: "Be Cool",
